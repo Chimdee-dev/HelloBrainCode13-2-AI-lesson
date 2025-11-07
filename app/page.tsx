@@ -8,6 +8,11 @@ export interface Message {
   id: string
   role: 'user' | 'assistant'
   content: string
+  tokenUsage?: {
+    promptTokens: number
+    completionTokens: number
+    totalTokens: number
+  }
 }
 
 export interface Conversation {
@@ -88,7 +93,7 @@ export default function Home() {
         ) : (
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-4xl font-bold mb-4">ChatGPT</h1>
+              <h1 className="text-4xl font-bold mb-4">Gemini-gpt</h1>
               <p className="text-gray-400">Start a new conversation</p>
             </div>
           </div>

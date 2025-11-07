@@ -62,7 +62,8 @@ export default function ChatInterface({
       let assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: ''
+        content: '',
+        tokenUsage: undefined
       }
 
       let done = false
@@ -86,6 +87,10 @@ export default function ChatInterface({
                 if (parsed.choices?.[0]?.delta?.content) {
                   assistantMessage.content += parsed.choices[0].delta.content
                   setMessages([...newMessages, assistantMessage])
+                }
+                // Token usage мэдээллийг авах
+                if (parsed.tokenUsage) {
+                  assistantMessage.tokenUsage = parsed.tokenUsage
                 }
               } catch (e) {
                 // Ignore parse errors
@@ -119,7 +124,7 @@ export default function ChatInterface({
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <div className="text-center max-w-2xl">
-              <h1 className="text-4xl font-bold mb-4">ChatGPT</h1>
+              <h1 className="text-4xl font-bold mb-4">Gemini-gpt</h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 <div className="p-4 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
                   <div className="font-semibold mb-2">💡 Examples</div>

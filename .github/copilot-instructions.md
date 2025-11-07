@@ -1,8 +1,8 @@
-# Copilot Instructions for ChatGPT Clone
+# Copilot Instructions for Gemini-gpt Clone
 
 ## Project Overview
 
-This is a Next.js 14 (App Router) ChatGPT clone that uses Google Gemini AI instead of OpenAI. It features real-time streaming responses, conversation management, and ChatGPT-like UI.
+This is a Next.js 14 (App Router) Gemini-gpt clone that uses Google Gemini AI instead of OpenAI. It features real-time streaming responses, conversation management, and Gemini-gpt-like UI.
 
 ## Critical Architecture Decisions
 
@@ -74,7 +74,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ## Styling Conventions
 
-### ChatGPT Color Palette (defined in components)
+### Gemini-gpt Color Palette (defined in components)
 
 - Background: `#343541` (main) / `#202123` (sidebar) / `#444654` (assistant bubble)
 - User avatar: `#5436da` (purple)

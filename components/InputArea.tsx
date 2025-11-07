@@ -43,7 +43,7 @@ export default function InputArea({ onSend, isLoading }: InputAreaProps) {
             value={input}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            placeholder="Message ChatGPT..."
+            placeholder="Message Gemini-gpt..."
             className="flex-1 bg-transparent resize-none py-3 px-4 outline-none text-white placeholder-gray-400 max-h-[200px] overflow-y-auto"
             rows={1}
             disabled={isLoading}
@@ -59,7 +59,7 @@ export default function InputArea({ onSend, isLoading }: InputAreaProps) {
           </button>
         </div>
         <p className="text-xs text-gray-500 text-center mt-2">
-          ChatGPT can make mistakes. Check important info.
+          Gemini-gpt can make mistakes. Check important info.
         </p>
       </div>
     </div>
