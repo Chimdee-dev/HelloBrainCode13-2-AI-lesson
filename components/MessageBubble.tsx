@@ -11,7 +11,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === 'user'
 
   return (
-    <div className={`flex items-start gap-4 p-4 ${isUser ? 'bg-[#343541]' : 'bg-[#444654]'}`}>
+    <div className={`flex items-start gap-4 p-4 relative ${isUser ? 'bg-[#343541]' : 'bg-[#444654]'}`}>
       <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
         isUser ? 'bg-[#5436da]' : 'bg-[#19c37d]'
       }`}>

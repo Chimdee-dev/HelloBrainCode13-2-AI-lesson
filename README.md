@@ -1,70 +1,108 @@
-# ChatGPT Clone
+# ChatGPT Клон
 
-A fully functional ChatGPT clone built with Next.js, React, TypeScript, and the OpenAI API.
+Next.js, React, TypeScript болон Google Gemini AI ашиглан хийсэн бүрэн ажиллагаатай ChatGPT клон.
 
-## Features
+## Онцлогууд
 
-- 🎨 Exact ChatGPT UI design match
-- 💬 Real-time streaming chat responses
-- 📚 Conversation history management
-- 🎯 Multiple conversations support
-- 💾 Persistent conversation state
-- 🎭 Markdown rendering for AI responses
+- 🎨 ChatGPT-тэй яг ижил UI дизайн
+- 💬 Бодит цаг хугацаанд урсгалт хариулт
+- 📚 Харилцан ярианы түүх удирдах
+- 🎯 Олон харилцан яриа дэмждэг
+- 💾 Тогтвортой харилцан яриа
+- 🎭 AI хариултын Markdown рендэр
+- 🔒 Screen recording болон screenshot хамгаалалт
+- ⚠️ Recording detector анхааруулга систем
 
-## Setup
+## Суулгалт
 
-1. Install dependencies:
+1. Хамаарлуудыг суулгах:
 
 ```bash
 npm install
 ```
 
-2. Create a `.env.local` file in the root directory and add your OpenAI API key:
+2. Үндсэн директорт `.env.local` файл үүсгэж, Gemini API түлхүүрээ нэмнэ:
 
 ```
-OPENAI_API_KEY=your_openai_api_key_here
+GEMINI_API_KEY=таны_gemini_api_түлхүүр
 ```
 
-3. Run the development server:
+3. Хөгжүүлэлтийн серверийг ажиллуулах:
 
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Хөтөч дээрээ [http://localhost:3000](http://localhost:3000) хаягаар нээнэ.
 
-## Project Structure
+## Төслийн бүтэц
 
 ```
 ├── app/
 │   ├── api/
 │   │   └── chat/
-│   │       └── route.ts          # OpenAI API integration
-│   ├── globals.css               # Global styles
-│   ├── layout.tsx                # Root layout
-│   └── page.tsx                  # Main page
+│   │       └── route.ts          # Gemini AI интеграци
+│   ├── globals.css               # Ерөнхий стайлууд
+│   ├── layout.tsx                # Үндсэн layout
+│   └── page.tsx                  # Үндсэн хуудас
 ├── components/
-│   ├── ChatInterface.tsx         # Chat interface component
-│   ├── InputArea.tsx             # Input area with send button
-│   ├── MessageBubble.tsx         # Message display component
-│   └── Sidebar.tsx               # Sidebar with conversations
+│   ├── ChatInterface.tsx         # Чатын интерфэйс компонент
+│   ├── InputArea.tsx             # Оролтын талбар илгээх товчтой
+│   ├── MessageBubble.tsx         # Мессеж харуулах компонент
+│   ├── Sidebar.tsx               # Харилцан яриануудын sidebar
+│   ├── ScreenProtection.tsx      # Screen хамгаалалтын компонент
+│   └── RecordingDetector.tsx     # Recording илрүүлэгч
 └── package.json
 ```
 
-## Technologies
+## Технологиууд
 
-- **Next.js 14** - React framework with App Router
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **OpenAI API** - GPT-3.5-turbo for chat completions
-- **React Markdown** - Markdown rendering
+- **Next.js 14** - App Router бүхий React фреймворк
+- **TypeScript** - Төрөл хамгаалалт
+- **Tailwind CSS** - Стайл
+- **Google Gemini AI** - gemini-2.0-flash-lite загвар (чат дөхөмжлөлт)
+- **React Markdown** - Markdown рендэр
 
-## Usage
+## Хэрэглээ
 
-1. Click "New chat" in the sidebar to start a new conversation
-2. Type your message in the input area
-3. Press Enter or click the send button to send your message
-4. The AI response will stream in real-time
-5. Manage multiple conversations from the sidebar
+1. Sidebar дээрх "New chat" товч дарж шинэ харилцан яриа эхлүүлэх
+2. Оролтын талбарт өөрийн мессежээ бичих
+3. Enter дарах эсвэл илгээх товч дарж мессеж илгээх
+4. AI-н хариулт бодит цаг хугацаанд урсаж харагдана
+5. Sidebar-аас олон харилцан яриагаа удирдах
 
-Enjoy your ChatGPT clone!
+## Аюулгүй байдал
+
+Төсөл нь дараах хамгаалалтын функцүүдтэй:
+
+- 🚫 Right-click, PrintScreen хориглолт
+- 🚫 Screenshot shortcut-уудыг саатуулах
+- 💧 Автомат watermark систем
+- ⚠️ Screen recording илрүүлэлт
+- 🔐 DevTools хориглолт
+
+**Анхааруулга:** Энэ нь 100% хамгаалалт биш боловч ихэнх энгийн оролдлогуудыг саатуулна.
+
+## Хөгжүүлэлтийн тушаалууд
+
+```bash
+npm run dev      # Хөгжүүлэлтийн сервер эхлүүлэх (localhost:3000)
+npm run build    # Үйлдвэрлэлийн build үүсгэх
+npm run start    # Үйлдвэрлэлийн build ажиллуулах
+```
+
+## Тэмдэглэл
+
+- ⚠️ Энэ төсөл **OpenAI биш** Google Gemini AI ашигладаг
+- 💡 Системийн заавар: AI нь зөвхөн HTML код үүсгэдэг (хүмүүний хэл дээр хариулахгүй)
+- 📝 API route (`route.ts`) дахь тайлбарууд монгол хэл дээр бичигдсэн
+- 🎯 Харилцан яриа санах ойд хадгалагддаг (хуудас шинэчлэхэд алга болно)
+
+## Gemini API түлхүүр авах
+
+1. [Google AI Studio](https://makersuite.google.com/app/apikey) руу орно
+2. Google account-аараа нэвтэрнэ
+3. "Create API Key" товч дарж шинэ түлхүүр үүсгэнэ
+4. Түлхүүрийг хуулж `.env.local` файлд хийнэ
+
+Таашаал авах болтугай! 🚀
