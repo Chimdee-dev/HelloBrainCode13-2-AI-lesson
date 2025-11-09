@@ -29,7 +29,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
         <ReactMarkdown
           components={{
             p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
-            code: ({ inline, children }) => 
+            code: ({ inline, children, ...props }: any) =>
               inline ? (
                 <code className="bg-gray-700 px-1 py-0.5 rounded text-sm">{children}</code>
               ) : (
@@ -46,7 +46,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
         >
           {message.content}
         </ReactMarkdown>
-        
+
         {/* Token usage display for assistant messages */}
         {!isUser && message.tokenUsage && (
           <div className="mt-3 pt-3 border-t border-gray-600 flex flex-wrap gap-4 text-xs text-gray-400">
@@ -76,4 +76,3 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
     </div>
   )
 }
-

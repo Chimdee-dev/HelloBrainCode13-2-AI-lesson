@@ -35,14 +35,14 @@ export async function POST(req: NextRequest) {
       // Мессежийн агуулгыг хэсгүүд болгон хувиргах
       parts: [{ text: msg.content }],
     }))
-    
+
     // Хамгийн сүүлийн мессежийн агуулгыг авах
     const lastMessage = messages[messages.length - 1].content
 
     // Gemini stream үүсгэж байгаа тухай консолд хэвлэх
     console.log('🚀 Creating Gemini stream...')
     // Gemini загварыг авах (gemini-2.0-flash-lite загвар ашиглах)
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
       model: 'gemini-2.0-flash-lite',
       // Системийн зааврыг тохируулах - зөвхөн монголоор хариулах
       systemInstruction: 'U are navite mongol speaker. Only answer in mongolian language in funny way',
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     // Текстийг кодлох encoder үүсгэх
     const encoder = new TextEncoder()
-    
+
     // Token usage tracking
     let promptTokens = 0
     let completionTokens = 0
@@ -74,38 +74,38 @@ export async function POST(req: NextRequest) {
           for await (const chunk of result.stream) {
             // Хэсгийн текстийг авах
             const text = chunk.text()
-            
+
             // Token usage хэрэв байвал авах
             if (chunk.usageMetadata) {
               promptTokens = chunk.usageMetadata.promptTokenCount || 0
               completionTokens = chunk.usageMetadata.candidatesTokenCount || 0
             }
-            
+
             // Server-Sent Events форматаар өгөгдөл бэлтгэх
-            const data = `data: ${JSON.stringify({ 
+            const data = `data: ${JSON.stringify({
               // Сонголтын массив
-              choices: [{ 
+              choices: [{
                 // Өөрчлөлтийн объект
-                delta: { content: text } 
-              }] 
+                delta: { content: text }
+              }]
             })}\n\n`
             // Кодлогдсон өгөгдлийг дараалалд нэмэх
             controller.enqueue(encoder.encode(data))
           }
-          
+
           // Token usage мэдээллийг илгээх
           const totalTokens = promptTokens + completionTokens
           console.log('📊 Token usage:', { promptTokens, completionTokens, totalTokens })
-          
-          const tokenData = `data: ${JSON.stringify({ 
-            tokenUsage: { 
-              promptTokens, 
-              completionTokens, 
-              totalTokens 
-            } 
+
+          const tokenData = `data: ${JSON.stringify({
+            tokenUsage: {
+              promptTokens,
+              completionTokens,
+              totalTokens
+            }
           })}\n\n`
           controller.enqueue(encoder.encode(tokenData))
-          
+
           // Урсгал амжилттай дууссан тухай консолд хэвлэх
           console.log('✅ Stream completed successfully')
           // Дууссан дохио илгээх
@@ -149,4 +149,3 @@ export async function POST(req: NextRequest) {
     )
   }
 }
-
